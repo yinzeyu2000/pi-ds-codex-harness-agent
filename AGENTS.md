@@ -1,4 +1,30 @@
-# Development Rules
+# pi-ds-codex-harness agent: Development & Transition Rules
+
+## Project Context & Architecture Vision
+
+- **Project Vision**: "Pi execution core + DeepSeek Harness composition plane + Codex industrial runtime".
+- **Author & Owner**: yinzeyu2000 (sole author & contributor; do not link to other contributors or repos).
+- **Core Reference Documents**:
+  - `EXECUTION_PLAN.md`: Master architectural plan and specification (M0-M9). Read relevant chapters before implementing any module.
+  - `docs/TRANSITION_HANDOVER.md`: Detailed onboarding, module index, and next milestone guides.
+  - `docs/milestones/`: Verified milestone status reports (`M1_STATUS.md` through `M5_STATUS.md`) and `M0_STATUS.md`.
+  - `docs/adr/`: Architecture decision records (ADR-001 through ADR-005).
+- **Seven Invariant Uniques**:
+  1. One foreground runtime state machine: `ThreadRuntime`.
+  2. One agent loop: Pi `agentLoop` driven by `PiAgentDriver`.
+  3. One canonical durable log: Single-writer JSONL journal with physical `fsync` and crash recovery.
+  4. One ModelGateway: Audited dispatch boundary for LLM calls.
+  5. One Tool/ExecutionBroker: All effectful tool actions (process, files, network) must go through `ExecutionBroker`.
+  6. One formal Plugin API: 4-tier ownership scope hierarchy (`RuntimeScope -> ThreadScope -> TurnScope -> TaskScope`) with transactional rollback.
+  7. One public protocol: Protocol v2 shared across Headless SDK, CLI, TUI, and future UI clients.
+- **Current Progress**:
+  - M0 through M5 are 100% implemented, tested (72 tests green), architecture guarded (`check-m0` to `check-m5`), and verified with `npm run check`.
+- **Next Development Milestones**:
+  - **M7a**: Protocol v2 transports, controller lease fencing (`ControllerEpoch`), request dedupe (`clientRequestId`), and durable/live cursor streams.
+  - **M6**: Policy intersection (`PermissionProfile`), approval fingerprints/expiry, and platform Sandbox Provider (fail-closed).
+  - **M7b**: App Server multi-UI integration & pending approvals.
+  - **M8**: Coding profile tool migration & CLI/TUI client integration.
+  - **M9**: Fault injection matrix & soak stabilization.
 
 ## Conversational Style
 

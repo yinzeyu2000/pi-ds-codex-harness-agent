@@ -36,6 +36,7 @@
 	},
 	"dependencies": {
 		"@earendil-works/pi-ai": "^0.84.4",
+		"@earendil-works/pi-protocol": "^0.84.4",
 		"@earendil-works/pi-telemetry": "^0.84.4",
 		"diff": "8.0.4",
 		"ignore": "7.0.5",

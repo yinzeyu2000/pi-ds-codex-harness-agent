@@ -5,7 +5,8 @@
 		"paths": {
 			"@earendil-works/pi-telemetry": ["../telemetry/dist/index.d.ts"],
 			"@earendil-works/pi-ai": ["../ai/dist/index.d.ts"],
-			"@earendil-works/pi-ai/*": ["../ai/dist/*.d.ts", "../ai/dist/providers/*.d.ts"]
+			"@earendil-works/pi-ai/*": ["../ai/dist/*.d.ts", "../ai/dist/providers/*.d.ts"],
+			"@earendil-works/pi-protocol": ["../protocol/dist/index.d.ts"]
 		},
 		"rootDir": "./src"
 	},
