@@ -1,4 +1,4 @@
-import type { StepId, ToolAttemptId, ToolCallId, TurnId } from "@earendil-works/pi-protocol";
+import type { ControllerEpoch, StepId, ThreadId, ToolAttemptId, ToolCallId, TurnId } from "@earendil-works/pi-protocol";
 
 export type ActionKind = "fs_read" | "fs_write" | "fs_edit" | "fs_delete" | "network" | "process" | "compute";
 
@@ -18,6 +18,8 @@ export interface ToolExecutionContext {
 	readonly turnId: TurnId;
 	readonly stepId: StepId;
 	readonly signal: AbortSignal;
+	readonly threadId?: ThreadId;
+	readonly controllerEpoch?: ControllerEpoch;
 }
 
 export interface ToolExecutionOutcome {

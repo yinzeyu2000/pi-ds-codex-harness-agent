@@ -5,6 +5,7 @@ import type {
 	DeduplicationKey,
 	RuntimeGeneration,
 	ThreadId,
+	ThreadSnapshot,
 	TurnId,
 } from "@earendil-works/pi-protocol";
 import type { JournalWriter } from "./journal.ts";
@@ -54,4 +55,5 @@ export interface ThreadRuntime {
 	interruptTurn(turnId: TurnId, epoch: ControllerEpoch, reason?: string): Promise<void>;
 	quiesce(): Promise<void>;
 	shutdown(): Promise<void>;
+	getSnapshot(): Promise<ThreadSnapshot>;
 }

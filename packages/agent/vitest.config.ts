@@ -9,6 +9,7 @@ const protocolSrcIndex = fileURLToPath(new URL("../protocol/src/index.ts", impor
 
 export default defineConfig({
 	test: {
+		include: ["packages/agent/test/**/*.test.ts", "test/**/*.test.ts"],
 		globals: true,
 		environment: "node",
 		testTimeout: 30000, // 30 seconds for API calls

@@ -1,5 +1,6 @@
 import type { RuntimeGeneration, ThreadId } from "@earendil-works/pi-protocol";
 import type { ThreadDurableState, ThreadResidencyState } from "./state-machines.ts";
+import type { ThreadRuntime } from "./thread-runtime.ts";
 
 export interface ThreadResidencyPin {
 	readonly pinId: string;
@@ -37,6 +38,9 @@ export interface HostLifecycleCoordinator {
 export interface RuntimeHost {
 	readonly hostId: string;
 	readonly lifecycleCoordinator: HostLifecycleCoordinator;
+	registerRuntime(runtime: ThreadRuntime): void;
+	unregisterRuntime(threadId: ThreadId): void;
+	getRuntime(threadId: ThreadId): ThreadRuntime | undefined;
 	isLoaded(threadId: ThreadId): boolean;
 	listLoadedThreads(): readonly ThreadId[];
 }
